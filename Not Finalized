@@ -1,0 +1,55 @@
+// Differentiating between PERFECT, ABUNDANT, and DEFICIENT
+// for lab - perfect, abundant, and deficient
+// Programmer: Khelan Modi
+// Date Modified: March 1st, 2019.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	system("title Classify a POSITIVE number as Abundant, Deficient or Perfect  by K.Modi ");
+	system("color 3f");
+
+	int num, x, total = 0;
+
+	cout
+		<< "                                      \n"
+		<< "\t\tPositive number classification as \n"
+		<< "\t\t perfect, abundant, or deficient  \n"
+		<< "\t\t            by K. Modi            \n";
+
+	cout << "\n\nEnter a number to be classified as perfect, abundant, or deficient: ";
+	cin >> num;
+	cin.ignore(200, '\n');
+
+	while (true)
+	{
+		while (num > 0)
+		{
+			for (x = 1; x < num; x++)
+			{
+				if (num % x == 0)
+				{
+					total += x;
+				}
+			}
+
+			cout << "\t" << num << " is a " << (total == num ? "PERFECT" : (num > total ? "DEFICIENT" : "ABUNDANT")) << " number.\n"
+			     << "    ***********************************************************************";
+
+			cout << "\n\nEnter a number to be classified as perfect, abundant, or deficient: ";
+			cin >> num;
+			cin.ignore(200, '\n');
+			
+			total = 0;
+		}
+	
+		cout << "This classification is for POSITIVE integers only. Please try again: ";
+		cin >> num;
+		cin.ignore(200, '\n');
+	
+	}
+	system("pause");
+	return 0;
+}
