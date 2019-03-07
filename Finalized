@@ -1,0 +1,60 @@
+// Differentiating between PERFECT, ABUNDANT, and DEFICIENT
+// for lab - perfect, abundant, and deficient
+// Programmer: Khelan Modi
+// Date Modified: March 1st, 2019.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	system("title Classify a POSITIVE number as Abundant, Deficient or Perfect  by K.Modi ");
+	system("color 3f");
+
+	int num, x, total;
+
+	//Banner
+	cout
+		<< "                                      \n"
+		<< "\t\tPositive number classification as \n"
+		<< "\t\t perfect, abundant, or deficient  \n"
+		<< "\t\t           by K. Modi             \n";
+
+	//Asking for user input.
+	cout << "\n\nEnter a number to be classified as perfect, abundant, or deficient: ";
+	cin >> num;
+	cin.ignore(200, '\n');
+
+	while (true)
+	{
+		total = 0;  //initializing total to zero for desired result
+
+		while (num <= 0) //input validation loop, checks if numbers are positive
+		{
+			cout << "This classification is for POSITIVE integers only. Please try again: ";
+			cin >> num;
+			cin.ignore(200, '\n');
+		}
+
+		//for loop for adding the factors to variable total
+		for (x = 1; x < num; x++)
+		{
+			if (num % x == 0)
+			{
+				total += x; // keeping running total
+			}
+		}
+
+		// Classifying the numbers 
+		cout << "\t" << num << " is a " << (total == num ? "PERFECT" : (num > total ? "DEFICIENT" : "ABUNDANT")) << " number.\n"
+			<< "    ***********************************************************************";
+
+		// Asking for another input.
+		cout << "\n\nEnter a number to be classified as perfect, abundant, or deficient: ";
+		cin >> num;
+		cin.ignore(200, '\n');
+	}
+
+	system("pause"); // halting the screen if while true loop fails to execute.
+	return 0;
+}
